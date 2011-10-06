@@ -6,7 +6,7 @@ begin
     gemspec.email = "opensource@thinkrelevance.com"
     gemspec.homepage = "http://github.com/relevance/cap_gun"
     gemspec.description = 'Super simple capistrano deployment notifications.'
-    gemspec.authors = ["Rob Sanheim", "Muness Alrubaie", "Relevance"]
+    gemspec.authors = ["Rob Sanheim", "Muness Alrubaie", "Relevance", "Mike Gunderloy"]
     gemspec.add_dependency 'activesupport'
     gemspec.add_dependency 'actionmailer'
     gemspec.add_development_dependency "micronaut"
