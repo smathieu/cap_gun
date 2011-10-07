@@ -63,7 +63,7 @@ module CapGun
         presenter = Presenter.new(capistrano)
 
         if CapGun::Mailer.respond_to?(:deployment_notification)
-          mail(:content_type => "text/plain", :to => presenter.recipients, :subject => presenter.subject, :body => presenter.body)
+          mail(:content_type => "text/plain", :from => presenter.from, :to => presenter.recipients, :subject => presenter.subject, :body => presenter.body)
         else
           content_type "text/plain"
           from         presenter.from
