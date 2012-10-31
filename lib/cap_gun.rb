@@ -83,14 +83,17 @@ if Object.const_defined?("Capistrano")
     namespace :cap_gun do
       desc "Send notification of the current release and the previous release via email."
       task :email, :roles => :app do
-        CapGun::Mailer.load_mailer_config(self)
-        if CapGun::Mailer.respond_to?(:deployment_notification)
-          CapGun::Mailer.deployment_notification(self).deliver
-        else
-          CapGun::Mailer.deliver_deployment_notification(self)
+        begin 
+          CapGun::Mailer.load_mailer_config(self)
+          if CapGun::Mailer.respond_to?(:deployment_notification)
+            CapGun::Mailer.deployment_notification(self).deliver
+          else
+            CapGun::Mailer.deliver_deployment_notification(self)
+          end
+        rescue => e
+          logger.info "Error while updating hipchat. #{e.inspect}"
         end
       end
     end
-
   end
 end
